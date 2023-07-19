@@ -1,10 +1,7 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-  
 
 
-// do i need a prevent default event?
+
+
 
 $(function () {
 
@@ -30,11 +27,9 @@ function colorHour() {
   //.each is to target all the classes of time block
   $('.time-block').each(function() {
   var timeNow = parseInt(dayjs().format('H'));
-  console.log(typeof timeNow);
-  var blockTime = $(this).attr('id').split("-");
+    var blockTime = $(this).attr('id').split("-");
   var hourMarker = parseInt(blockTime[1]);
-  console.log(blockTime);
-  if (hourMarker === timeNow) {
+   if (hourMarker === timeNow) {
     $(this).toggleClass('present');
   } else if (hourMarker > timeNow) {
     $(this).toggleClass('future');

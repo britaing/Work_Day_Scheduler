@@ -29,11 +29,14 @@ $('#currentDay').text(today.format('MMM D, YYYY // hh:mm A'));
 function colorHour() {
   //.each is to target all the classes of time block
   $('.time-block').each(function() {
-  var timeNow = dayjs().format('H');
-  var blockTime = $(this).attr('id');
-  if (blockTime == timeNow) {
+  var timeNow = parseInt(dayjs().format('H'));
+  console.log(typeof timeNow);
+  var blockTime = $(this).attr('id').split("-");
+  var hourMarker = parseInt(blockTime[1]);
+  console.log(blockTime);
+  if (hourMarker === timeNow) {
     $(this).toggleClass('present');
-  } else if (blockTime > timeNow) {
+  } else if (hourMarker > timeNow) {
     $(this).toggleClass('future');
   } else {
     $(this).toggleClass('past');
@@ -41,6 +44,7 @@ function colorHour() {
 
 });
 }
+colorHour();
 
 
   var saveButton = $('.saveBtn');
